@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Phone</title>
+</head>
+<body>
+<!--<p>-->
+<!--    <a th:href="@{/}">Back to homepage</a>-->
+<!--</p>-->
+<p>
+    <a href="/create-phone">Create new phone</a>
+</p>
+<h1>Phones</h1>
+<a href="/">Back to homepage</a>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="phone : ${phones}">
+        <tr>
+            <td th:text="${phone.name}"></td>
+            <td th:text="${phone.dateOfPurchase}"></td>
+            <td th:text="${phone.price}"></td>
+            <td th:text="${phone.description}"></td>
+            <td th:text="${phone.category.name}"></td>
+            <td><a th:href="@{/edit-phone/__${phone.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-phone/__${phone.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+<!--    <a th:href="@{'/materials'(page=${materials.number - 1})}" th:if="${materials.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${materials.number + 1}"></span>/<span th:text="${materials.totalPages}"></span>-->
+<!--    <a th:href="@{'/materials'(page=${materials.number + 1})}" th:if="${materials.hasNext()}">Next</a>-->
+</div>
+</body>
+</html>
